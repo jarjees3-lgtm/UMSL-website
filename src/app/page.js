@@ -53,6 +53,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="hero">
+        <div className="hero-bg"></div>
         <div className="hero-container">
           <div className="hero-content">
             <div className="hero-badge">

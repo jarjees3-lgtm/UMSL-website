@@ -144,9 +144,19 @@ nav a:hover::after {
     display: flex;
     align-items: center;
     padding: 120px 24px 80px 24px;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: radial-gradient(circle at 75% 40%, rgba(23, 42, 69, 0.45) 0%, rgba(10, 25, 47, 0.82) 80%), url('/cargo_ship_sunset.png') no-repeat center center;
     background-size: cover;
-    background-attachment: fixed;
+    z-index: 1;
+    animation: kenBurns 25s ease-in-out infinite alternate;
 }
 
 .hero-container {
@@ -157,9 +167,12 @@ nav a:hover::after {
     grid-template-columns: 1.2fr 0.8fr;
     gap: 40px;
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 .hero-content {
+    position: relative;
     z-index: 2;
 }
 
@@ -177,7 +190,7 @@ nav a:hover::after {
     margin-bottom: 24px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    animation: pulse 2s infinite;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards, pulse 2s infinite;
 }
 
 @keyframes pulse {
@@ -186,11 +199,44 @@ nav a:hover::after {
     100% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0); }
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(45px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes kenBurns {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.08);
+    }
+}
+
 .hero h2 {
     font-size: 3.5rem;
     line-height: 1.2;
     margin-bottom: 20px;
     color: #FFFFFF;
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
 }
 
 .hero h2 span {
@@ -205,12 +251,16 @@ nav a:hover::after {
     color: var(--text-secondary);
     margin-bottom: 40px;
     max-width: 600px;
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
 }
 
 .hero-btns {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
 }
 
 .btn-primary {
@@ -256,6 +306,8 @@ nav a:hover::after {
     padding: 30px;
     box-shadow: var(--card-shadow);
     z-index: 2;
+    opacity: 0;
+    animation: fadeInRight 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
 }
 
 .stat-item {
