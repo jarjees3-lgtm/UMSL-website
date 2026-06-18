@@ -25,7 +25,26 @@ export default function Home() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // Setup Intersection Observer for reveal animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal-visible");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const revealElements = document.querySelectorAll(".reveal");
+    revealElements.forEach((el) => observer.observe(el));
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      revealElements.forEach((el) => observer.unobserve(el));
+    };
   }, []);
 
   return (
@@ -89,14 +108,14 @@ export default function Home() {
       {/* Services Section */}
       <section className="services-section" id="services">
         <div className="section-container">
-          <div className="section-title-wrapper">
+          <div className="section-title-wrapper reveal">
             <span className="section-subtitle">What We Do</span>
             <h2 className="section-title">Our Specialized Services</h2>
           </div>
           
           <div className="services-grid">
             {/* Service 1: Flat Rack Cargo */}
-            <div className="service-card">
+            <div className="service-card reveal">
               <div className="service-image-wrapper">
                 <img src="/Flatrack.png" alt="Flat Rack Cargo" className="service-image" />
               </div>
@@ -107,7 +126,7 @@ export default function Home() {
             </div>
 
             {/* Service 2: OOG Cargo */}
-            <div className="service-card">
+            <div className="service-card reveal delay-1">
               <div className="service-image-wrapper">
                 <img src="/oog.png" alt="OOG Cargo" className="service-image" />
               </div>
@@ -118,7 +137,7 @@ export default function Home() {
             </div>
 
             {/* Service 3: Machinery Transport */}
-            <div className="service-card">
+            <div className="service-card reveal delay-2">
               <div className="service-image-wrapper">
                 <img src="/machinerytransport.png" alt="Machinery Transport" className="service-image" />
               </div>
@@ -129,7 +148,7 @@ export default function Home() {
             </div>
 
             {/* Service 4: Logs & Timber */}
-            <div className="service-card">
+            <div className="service-card reveal delay-3">
               <div className="service-image-wrapper">
                 <img src="/logsandtimber.png" alt="Logs & Timber" className="service-image" />
               </div>
@@ -140,7 +159,7 @@ export default function Home() {
             </div>
 
             {/* Service 5: Fresh Fruits */}
-            <div className="service-card">
+            <div className="service-card reveal">
               <div className="service-image-wrapper">
                 <img src="/freshfruits.png" alt="Fresh Fruits" className="service-image" />
               </div>
@@ -151,7 +170,7 @@ export default function Home() {
             </div>
 
             {/* Service 6: Agro Products */}
-            <div className="service-card">
+            <div className="service-card reveal delay-1">
               <div className="service-image-wrapper">
                 <img src="/agroproducts.png" alt="Agro Products" className="service-image" />
               </div>
@@ -162,7 +181,7 @@ export default function Home() {
             </div>
 
             {/* Service 7: Chemicals & Raw Materials */}
-            <div className="service-card">
+            <div className="service-card reveal delay-2">
               <div className="service-image-wrapper">
                 <img src="/Chemicalsandrawmaterials.png" alt="Chemicals & Raw Materials" className="service-image" />
               </div>
@@ -173,7 +192,7 @@ export default function Home() {
             </div>
 
             {/* Service 8: Global Sourcing */}
-            <div className="service-card">
+            <div className="service-card reveal delay-3">
               <div className="service-image-wrapper">
                 <img src="/GlobalSourcing.png" alt="Global Sourcing" className="service-image" />
               </div>
@@ -215,21 +234,21 @@ export default function Home() {
             </div>
           </div>
           <div className="sourcing-graphic">
-            <div className="graphic-item">
+            <div className="graphic-item reveal">
               <div className="graphic-number">1</div>
               <div className="graphic-desc">
                 <h4>Strict Origin Inspections</h4>
                 <p>We check wood moisture and agro hygiene before sealing containers.</p>
               </div>
             </div>
-            <div className="graphic-item">
+            <div className="graphic-item reveal delay-1">
               <div className="graphic-number">2</div>
               <div className="graphic-desc">
                 <h4>Specialized Port Rigging</h4>
                 <p>Proper securing of heavy machinery on flat racks and open platforms.</p>
               </div>
             </div>
-            <div className="graphic-item">
+            <div className="graphic-item reveal delay-2">
               <div className="graphic-number">3</div>
               <div className="graphic-desc">
                 <h4>Frictionless Customs</h4>
@@ -243,14 +262,14 @@ export default function Home() {
       {/* Contact Us Section */}
       <section className="contact-section" id="contact">
         <div className="section-container">
-          <div className="section-title-wrapper">
+          <div className="section-title-wrapper reveal">
             <span className="section-subtitle">Get In Touch</span>
             <h2 className="section-title">Contact Our Global Desk</h2>
           </div>
 
           <div className="contact-grid">
             {/* Head Office Card */}
-            <div className="contact-card">
+            <div className="contact-card reveal">
               <svg viewBox="0 0 24 24">
                 <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A8,8 0 0,0 4,10C4,15.25 12,22 12,22C12,22 20,15.25 20,10A8,8 0 0,0 12,2Z"/>
               </svg>
@@ -259,7 +278,7 @@ export default function Home() {
             </div>
 
             {/* Phone Card */}
-            <div className="contact-card">
+            <div className="contact-card reveal delay-1">
               <svg viewBox="0 0 24 24">
                 <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
               </svg>
@@ -269,7 +288,7 @@ export default function Home() {
             </div>
 
             {/* Email Card */}
-            <div className="contact-card">
+            <div className="contact-card reveal delay-2">
               <svg viewBox="0 0 24 24">
                 <path d="M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4M20,8L12,13L4,8V6L12,11L20,6V8Z"/>
               </svg>

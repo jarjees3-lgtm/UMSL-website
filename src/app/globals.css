@@ -241,9 +241,17 @@ nav a:hover::after {
 
 .hero h2 span {
     color: var(--accent);
-    background: linear-gradient(135deg, #FFF, var(--accent));
+    background: linear-gradient(120deg, #FFF 0%, var(--accent) 50%, #FFF 100%);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
 }
 
 .hero p {
@@ -830,4 +838,32 @@ footer {
     100% {
         box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
     }
+}
+
+/* Scroll-Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 {
+    transition-delay: 0.12s;
+}
+
+.delay-2 {
+    transition-delay: 0.24s;
+}
+
+.delay-3 {
+    transition-delay: 0.36s;
+}
+
+.delay-4 {
+    transition-delay: 0.48s;
 }
