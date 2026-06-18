@@ -393,6 +393,41 @@ nav a:hover::after {
     color: var(--text-dark-primary);
 }
 
+.services-network-desc {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    color: var(--text-dark-secondary);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.network-badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.network-badge {
+    background: rgba(10, 25, 47, 0.05);
+    border: 1px solid rgba(10, 25, 47, 0.1);
+    color: var(--text-dark-primary);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.network-badge:hover {
+    background: var(--primary);
+    color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(10, 25, 47, 0.15);
+}
+
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

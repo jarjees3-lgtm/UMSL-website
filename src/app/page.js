@@ -111,6 +111,19 @@ export default function Home() {
           <div className="section-title-wrapper reveal">
             <span className="section-subtitle">What We Do</span>
             <h2 className="section-title">Our Specialized Services</h2>
+            <p className="services-network-desc">
+              Direct shipping lanes & custom clearance active across:
+            </p>
+            <div className="network-badges">
+              <span className="network-badge">KSA</span>
+              <span className="network-badge">UAE</span>
+              <span className="network-badge">Europe</span>
+              <span className="network-badge">Malaysia</span>
+              <span className="network-badge">China</span>
+              <span className="network-badge">Singapore</span>
+              <span className="network-badge">USA</span>
+              <span className="network-badge">India</span>
+            </div>
           </div>
           
           <div className="services-grid">
